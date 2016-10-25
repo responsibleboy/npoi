@@ -325,8 +325,8 @@ namespace NPOI.OpenXml4Net.OPC
                     string tempfilePath=GenerateTempFileName(FileHelper
                                     .GetDirectory(this.originalPackagePath));
 
-                    FileInfo fi=NPOI.Util.TempFile.CreateTempFile(
-                            tempfilePath, ".tmp");
+                    FileInfo fi=NPOI.Util.TempFile.CreateTempFile(tempfilePath, ".tmp");
+                    tempfilePath = fi.FullName; //tmp文件，如果不指定文件名则无法删除临时文件
 
                     // Save the final package to a temporary file
                     try
@@ -371,9 +371,9 @@ namespace NPOI.OpenXml4Net.OPC
             string path = null;
             do
             {
-                path = directory + "\\"
-            + "OpenXml4Net" + System.DateTime.Now.Ticks;
-
+                //path = directory + "\\" + "OpenXml4Net" + System.DateTime.Now.Ticks;
+                path = directory + "\\" + "OpenXml4Net_" + Guid.NewGuid().ToString("N").ToUpper();  //GUID替换ticks
+                
                 tmpFilename = new FileInfo(path);
             } while (File.Exists(path));
 
