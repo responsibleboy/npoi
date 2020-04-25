@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NPOI.XWPF.UserModel;
-using System.IO;
+﻿using NPOI.OpenXml4Net.OPC;
 using NPOI.SS.UserModel;
-using NPOI.OpenXml4Net.OPC;
+using NPOI.XWPF.UserModel;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace UpdateEmbeddedDoc
 {
@@ -65,7 +63,7 @@ namespace UpdateEmbeddedDoc
                     }
                     catch (IOException)
                     {
-                        System.Console.WriteLine("IOException caught trying to close " +
+                        Console.WriteLine("IOException caught trying to close " +
                                 "FileInputStream in the constructor of " +
                                 "UpdateEmbeddedDoc.");
                     }
@@ -95,7 +93,7 @@ namespace UpdateEmbeddedDoc
             IWorkbook workbook = null;
             ISheet sheet = null;
             IRow row = null;
-            ICell cell = null;
+            NPOI.SS.UserModel.ICell cell = null;
             PackagePart pPart = null;
             IEnumerator<PackagePart> pIter = null;
             List<PackagePart> embeddedDocs = this.doc.GetAllEmbedds();
@@ -158,7 +156,7 @@ namespace UpdateEmbeddedDoc
             IWorkbook workbook = null;
             ISheet sheet = null;
             IRow row = null;
-            ICell cell = null;
+            NPOI.SS.UserModel.ICell cell = null;
             PackagePart pPart = null;
             IEnumerator<PackagePart> pIter = null;
             List<PackagePart> embeddedDocs = this.doc.GetAllEmbedds();
@@ -183,12 +181,9 @@ namespace UpdateEmbeddedDoc
 
         static void Main(string[] args)
         {
-               UpdateEmbeddedDoc ued = new UpdateEmbeddedDoc(args[0]);
-                ued.UpdateEmbeddedDoc1();
-                ued.CheckUpdatedDoc();
-
+            UpdateEmbeddedDoc ued = new UpdateEmbeddedDoc(args[0]);
+            ued.UpdateEmbeddedDoc1();
+            ued.CheckUpdatedDoc();
         }
-
-
     }
 }

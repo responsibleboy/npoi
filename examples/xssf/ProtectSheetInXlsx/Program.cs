@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using NPOI.SS.UserModel;
 using System.IO;
 
 namespace NPOI.Examples.XSSF.ProtectSheetInXlsx
@@ -12,18 +9,17 @@ namespace NPOI.Examples.XSSF.ProtectSheetInXlsx
         static void Main(string[] args)
         {
             IWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet sheet1=(XSSFSheet)workbook.CreateSheet("Sheet A1");
+            XSSFSheet sheet1 = (XSSFSheet)workbook.CreateSheet("Sheet A1");
 
-            sheet1.LockFormatRows();
-            sheet1.LockFormatCells();
-            sheet1.LockFormatColumns();
-            sheet1.LockDeleteColumns();
-            sheet1.LockDeleteRows();
-            sheet1.LockInsertHyperlinks();
-            sheet1.LockInsertColumns();
-            sheet1.LockInsertRows();
+            sheet1.LockFormatRows(true);
+            sheet1.LockFormatCells(true);
+            sheet1.LockFormatColumns(true);
+            sheet1.LockDeleteColumns(true);
+            sheet1.LockDeleteRows(true);
+            sheet1.LockInsertHyperlinks(true);
+            sheet1.LockInsertColumns(true);
+            sheet1.LockInsertRows(true);
             sheet1.ProtectSheet("password");
-            
 
             FileStream sw = File.Create("test.xlsx");
             workbook.Write(sw);
