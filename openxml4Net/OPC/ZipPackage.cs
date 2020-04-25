@@ -466,8 +466,8 @@ namespace NPOI.OpenXml4Net.OPC
             string path = null;
             do
             {
-                path = directory + "\\"
-            + "OpenXml4Net" + System.DateTime.Now.Ticks;
+                //path = directory + "\\" + "OpenXml4Net" + System.DateTime.Now.Ticks;
+                path = directory + "\\" + "OpenXml4Net_" + Guid.NewGuid().ToString("N").ToUpper();  //GUID替换ticks
 
                 tmpFilename = new FileInfo(path);
             } while (File.Exists(path));

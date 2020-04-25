@@ -1251,6 +1251,13 @@ namespace NPOI.OpenXmlFormats.Dml
             this.itemsValueField.Add(null);
             return obj;
         }
+
+        public void AddItemsElement(EG_ColorTransform egct, string value)
+        {
+            this.itemsElementNameField.Add(egct);
+            this.itemsValueField.Add(value);
+        }
+
         public static CT_SchemeColor Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
